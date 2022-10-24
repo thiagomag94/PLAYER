@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Progressivo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+
+<style>
+    audio::-webkit-media-controls-mute-button {
+        display:none;
+        border-radius: 50%;
+}
+audio::-webkit-media-controls-panel {
+        display:flex;
+        
+        background-color: rgb(32, 28, 28)
+}  
+audio::-webkit-media-controls-volume-slider{
+    visibility: hidden;
+}
+    
+
+.material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+</style>
+
+<body class="bg-neutral-900">
+    <main class="px-6 pt-12 w-full flex flex-col justify-start   ">
+        <div id="info-album" class="flex  justify-start  w-full mb-12 ">
+            <img src="/assets/imgs/capa projeto.PNG" class="w-40 shadow-md shadow-slate-500/40">
+            <div id="info-text" class="flex flex-col">
+                <h3 class="text-2xl text-slate-200 mt-4 ml-4 font-bold">Projeto Prog</h3>
+                <p class="text-sm text-slate-400 mt-4 ml-4 " >Vocals: Adriano Forte</p>
+                <p class="text-sm text-slate-400 mt-4 ml-4 ">Bass: Geo Silva </p>
+                <p class="text-sm text-slate-400 mt-4 ml-4">Guitars: Thiago Borges</p>
+            </div>
+
+        </div>
+        <button id="playAll" class="w-4/6 bg-red-800 text-slate-200 text-lg rounded-lg py-2 mb-8 flex justify-center items-center gap-2 drop-shadow-lg hover:bg-slate-800"><span class="material-symbols-outlined text-2xl ">
+            play_circle</span>Ouvir o álbum</button>
+        <ul class="w-full text-slate-200 divide-y divide-slate-800">
+            <li class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>1</h3><h3>Interrupted Light</h3> </li>
+            <audio id="1" src="/MUSICA 01.wav" preload="metadata"  class="bg-stone-900"></audio>
+            <li class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>2</h3><h3></h3></li>
+            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>3</h3><h3></h3> </li>
+            <audio src="/MUSICA 01.wav" preload="metadata"  class="bg-stone-900"></audio>
+            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>4</h3><h3></h3></li>
+            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>5</h3><h3></h3> </li>
+            <audio src="/MUSICA 01.wav" preload="metadata"  class="bg-stone-900"></audio>
+            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>6</h3><h3></h3></li>
+            <li class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>1</h3><h3></h3> </li>
+            <audio src="/MUSICA 01.wav" preload="metadata"  class="bg-stone-900"></audio>
+            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>2</h3><h3></h3></li>
+            <li class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>1</h3><h3></h3> </li>
+            <audio src="/MUSICA 01.wav" preload="metadata"  class="bg-stone-900"></audio>
+           
+        </ul> 
+    </main>
+    <div id="audio-player-container" class="w-screen h-40 p-4 bg-red-700 fixed  bottom-0 pb-16">
+        <div id="info-album-footer" class="flex  justify-start  w-full mb-8">
+            <img src="/assets/imgs/capa projeto.PNG" class="w-16 h-16 shadow-md shadow-slate-500/40">
+            <div id="info-text" class="flex flex-col">
+                <h3 class="text-xl text-slate-200 mt-1 ml-4 font-bold">Música</h3>
+                <p class="text-sm text-slate-400  ml-4 " >Projeto Prog</p>
+            </div>
+            <button id="play-icon"><span class="material-symbols-rounded text-4xl text-slate-200 absolute right-24 top-6">play_arrow</span></button>
+            <span class="material-symbols-rounded  text-4xl text-slate-200 absolute right-10 top-6">skip_next</span>
+        </div>
+        <div id="duration" class="flex justify-between items-center text-slate-200 -mt-4 mb-2">
+            <span id="current-time" class="time">0:00</span>
+            <span id="duration" class="time">0:00</span>
+        </div>
+        <input type="range" id="seek-slider" max="100" value="0" class="w-full out-of-range:border-red-500">  
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
