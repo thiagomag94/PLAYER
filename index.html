@@ -23,6 +23,19 @@ audio::-webkit-media-controls-panel {
 audio::-webkit-media-controls-volume-slider{
     visibility: hidden;
 }
+
+/* For Firefox */
+progress::-moz-progress-bar {
+    background: #FFF;
+        }
+  
+/* For Chrome or Safari */
+ progress::-webkit-progress-value {
+    background: #FFF;
+}
+  
+
+
     
 
 .material-symbols-rounded {
@@ -44,7 +57,7 @@ audio::-webkit-media-controls-volume-slider{
 </style>
 
 <body class="bg-neutral-900">
-    <main class="px-6 pt-12 w-full flex flex-col justify-start   ">
+    <main class="px-6 pt-20 w-full flex flex-col justify-start   ">
         <div id="info-album" class="flex  justify-start  w-full mb-12 ">
             <img src="/assets/imgs/capa projeto.PNG" class="w-40 shadow-md shadow-slate-500/40">
             <div id="info-text" class="flex flex-col">
@@ -55,31 +68,31 @@ audio::-webkit-media-controls-volume-slider{
             </div>
 
         </div>
-        <button id="playAll" class="w-4/6 bg-red-800 text-slate-200 text-lg rounded-lg py-2 mb-8 flex justify-center items-center gap-2 drop-shadow-lg hover:bg-slate-800"><span class="material-symbols-outlined text-2xl ">
+        <button id="playAll" class="w-4/6 bg-red-800 text-slate-200 text-lg rounded-lg py-2 mb-8 flex justify-center items-center gap-2 drop-shadow-lg lg:hover:bg-slate-800"><span class="material-symbols-outlined text-2xl ">
             play_circle</span>Ouvir o álbum</button>
         <ul class="w-full text-slate-200 divide-y divide-slate-800">
-            <li class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>1</h3><h3>Interrupted Light</h3> </li>
+            <li class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer "><h3>1</h3><h3>Interrupted Light</h3> </li>
             <audio id="1" src="/MUSICA 01.wav" preload="metadata"  class="bg-stone-900"></audio>
-            <li class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>2</h3><h3></h3></li>
-            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>3</h3><h3></h3> </li>
+            <li class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer"><h3>2</h3><h3></h3></li>
+            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer"><h3>3</h3><h3></h3> </li>
             <audio src="/MUSICA 01.wav" preload="metadata"  class="bg-stone-900"></audio>
-            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>4</h3><h3></h3></li>
-            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>5</h3><h3></h3> </li>
+            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer"><h3>4</h3><h3></h3></li>
+            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer"><h3>5</h3><h3></h3> </li>
             <audio src="/MUSICA 01.wav" preload="metadata"  class="bg-stone-900"></audio>
-            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>6</h3><h3></h3></li>
-            <li class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>1</h3><h3></h3> </li>
+            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer "><h3>6</h3><h3></h3></li>
+            <li class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>7</h3><h3></h3> </li>
             <audio src="/MUSICA 01.wav" preload="metadata"  class="bg-stone-900"></audio>
-            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>2</h3><h3></h3></li>
-            <li class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>1</h3><h3></h3> </li>
+            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>8</h3><h3></h3></li>
+            <li class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>9</h3><h3></h3> </li>
             <audio src="/MUSICA 01.wav" preload="metadata"  class="bg-stone-900"></audio>
            
         </ul> 
     </main>
-    <div id="audio-player-container" class="w-screen h-40 p-4 bg-red-700 fixed  bottom-0 pb-16">
+    <div id="audio-player-container" class="w-screen h-40 p-4 bg-red-700  transform translate-y-40 fixed  bottom-0 pb-16">
         <div id="info-album-footer" class="flex  justify-start  w-full mb-8">
             <img src="/assets/imgs/capa projeto.PNG" class="w-16 h-16 shadow-md shadow-slate-500/40">
             <div id="info-text" class="flex flex-col">
-                <h3 class="text-xl text-slate-200 mt-1 ml-4 font-bold">Música</h3>
+                <h3 class="text-md text-slate-200 mt-1 ml-4 font-bold">Música</h3>
                 <p class="text-sm text-slate-400  ml-4 " >Projeto Prog</p>
             </div>
             <button id="play-icon"><span class="material-symbols-rounded text-4xl text-slate-200 absolute right-24 top-6">play_arrow</span></button>
@@ -89,7 +102,7 @@ audio::-webkit-media-controls-volume-slider{
             <span id="current-time" class="time">0:00</span>
             <span id="duration" class="time">0:00</span>
         </div>
-        <input type="range" id="seek-slider" max="100" value="0" class="w-full out-of-range:border-red-500">  
+        <progress id="seek-slider" max="100" value="23" class=" w-full h-0.5 mb-10 ">  </progress>
     </div>
 </body>
 <script src="script.js"></script>
