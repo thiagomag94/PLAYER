@@ -72,19 +72,8 @@ progress::-moz-progress-bar {
             play_circle</span>Ouvir o álbum</button>
         <ul class="w-full text-slate-200 divide-y divide-slate-800">
             <li id="music01" class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer " ><h3>1</h3><h3>Interrupted Light</h3> </li>
-            <audio id="1" src="/MUSICA 01.mp3" preload="metadata"  class="bg-stone-900"></audio>
+            <audio id="" src=""   class="bg-stone-900"></audio>
             <li id="music02" class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer" ><h3>2</h3><h3>Dark Memories</h3></li>
-            <audio id="2" src="/ENDING THEME.mp3" preload="metadata"  class="bg-stone-900"></audio>
-            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer"><h3>3</h3><h3>Música 03</h3> </li>
-            
-            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer"><h3>4</h3><h3>Música 04</h3></li>
-            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer"><h3>5</h3><h3>Música05</h3> </li>
-           
-            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer "><h3>6</h3><h3></h3></li>
-            <li class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>7</h3><h3></h3> </li>
-            
-            <li class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>8</h3><h3></h3></li>
-            <li class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer hover:bg-slate-800"><h3>9</h3><h3></h3> </li>
             
            
         </ul> 
@@ -97,11 +86,11 @@ progress::-moz-progress-bar {
                 <p class="text-sm text-slate-400  ml-4 " >Projeto Prog</p>
             </div>
             <button ><span class="material-symbols-rounded text-4xl text-slate-200 absolute right-24 top-6" id="play-icon">pause</span></button>
-            <span class="material-symbols-rounded  text-4xl text-slate-200 absolute right-10 top-6">skip_next</span>
+            <span id="skip-next" class="material-symbols-rounded  text-4xl text-slate-200 absolute right-10 top-6">skip_next</span>
         </div>
         <div id="duration-div" class="flex justify-between items-center text-slate-200 -mt-4 mb-2">
             <span id="current" class="time"></span>
-            <span id="duration" class="time"></span>
+            <span id="duration" class="time">00:00</span>
         </div>
         <progress id="seek-slider" max="1" value="0" class=" w-full h-0.5 mb-6 ">  </progress>
     </div>

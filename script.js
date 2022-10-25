@@ -1,19 +1,20 @@
 
 //----------------------Define os audios e suas propriedades-------------------------
 
-var audio = document.getElementById('1');
-var audio2 = document.getElementById('2');
-var audio3 = document.getElementById('3');
+var audio = document.querySelector('audio')
+
 var musicName = document.getElementById('music-name');
 var currentTimeSpan = document.getElementById('current');
 var durationTimeSpan = document.getElementById('duration')
-var label01 = document.getElementById('music01')
-var label02 = document.getElementById('music02')
+var label = Array.from(document.getElementsByTagName('li'))
+
+console.log(label)
+
 
 
 var album ={
-    'musica01':{'audio': audio, 'name':'Interrupted Light', 'currentTime': audio.currentTime, 'duration':audio.duration},
-    'musica02':{'audio': audio2, 'name':'Dark Memories', 'currentTime': audio.currentTime, 'duration':audio2.duration},
+    'music01':{'name':'Interrupted Light', 'src': '/MUSICA 01.mp3', 'identificador':'01'},
+    'music02':{'name':'Dark Memories', 'src':'/ENDING THEME.mp3', 'identificador':'02'},
 
 }
 
@@ -48,28 +49,22 @@ buttonPlayAll.addEventListener("click", () =>{
     
     if (stateButton === 1){
         stateButton = 0
-        //audio.pause()
         console.log('hiding..')
         
 
     }
     else {
         stateButton = 1
-        showFooter('musica01', album.musica01.name);
-        album.musica01.audio.play();
-        
         console.log('showing...')
     }
 
-    progressBar('musica01')
 })
 
 //------------------------------------Aparecer Footer-----------------------
 
-const showFooter = (music, music_name) => {
+const showFooter = (music) => {
     var displayFooter = document.getElementById('audio-player-container')
-    musicName.innerText = music_name
-    playPause(music)
+    musicName.innerText = album[music].name
     displayFooter.classList.add('transform', '-translate-y-0')
     displayFooter.style.transition = 'all 1.618s ease'
     stateFooter = 1
@@ -86,12 +81,14 @@ const hideFooter = (music) => {
 
 //------------------------Atualiza Progress Bar ----------------------------
 
-function progressBar (music) {
+function progressBar () {
     var progressBar = document.getElementById('seek-slider');
-    album[music].audio.addEventListener('timeupdate', function(){
+    audio.addEventListener('timeupdate', function(){
         progressBar.setAttribute("value", this.currentTime / this.duration);
-        currentTimeSpan.textContent = `${calculateTime(this.currentTime)} `
         durationTimeSpan.textContent = `${calculateTime(this.duration)}`
+        currentTimeSpan.textContent = `${calculateTime(this.currentTime)} `
+        var audio_id = this.id
+        
 
 })
 }
@@ -107,56 +104,49 @@ const calculateTime = (secs) => {
 
 //--------------------muda botão play/pause---------------------------
 
-function playPause(music_name){
+
     var playIcon = document.getElementById('play-icon');
     playIcon.addEventListener('click', () =>{
+    console.log('evento disparado')
     if (playIcon.textContent == 'pause'){
         playIcon.textContent = 'play_arrow';
-        album[music_name].audio.pause()
+        audio.pause()
     }
     else {
         playIcon.textContent = 'pause';
-        album[music_name].audio.play()
+        audio.play()
     }
-    
 })
-}
 
 // ----------------------------toca musica 01 -------------------------
-
-label01.addEventListener('click', () =>{
-    hideFooter('musica02');
-    if (stateLista==0){
-        showFooter('musica01',album.musica01.name);
-        progressBar('musica01');
-        album.musica01.audio.play();
-        label01.classList.add('bg-slate-800');
-        stateLista = 1;
-    }
-    else {
-        album.musica01.audio.pause();
+label.forEach(function(li){
+    li.addEventListener('click', () =>{
+        //-------------seta o botão pause inicialmente
+        playIcon.textContent = 'pause';
+        var id = li.id
+       
+        if (stateLista==0){
+            console.log(album[id])
+            audio.setAttribute('src', album[id].src)
+            audio.setAttribute('id', album[id].identificador )
+            progressBar()
+            showFooter(id)
+            audio.play()
+        }
         
-        stateLista = 0;
-    }
-
-    console.log('showing...')
+    })
 })
 
-//------------------------------toca musica 02 ---------------------
 
-label02.addEventListener('click', () =>{
-    hideFooter('musica01'); 
-    console.log(stateLista);
-    if (stateLista==0){
-        showFooter('music02', album.musica02.name);
-        progressBar('musica02');
-        album.musica02.audio.play();
-        label02.classList.add('bg-slate-800');
-        stateLista = 1;
-    }
-    else {
-        label02.classList.remove('bg-slate-800');
-        stateLista = 0;
-    }
+//------------------------------botao avançar ---------------------
+
+var skip = document.getElementById('skip-next');
+skip.addEventListener('click', () => {
+    audio['musica'+audio_id]
     
-})
+
+
+
+}
+
+)
