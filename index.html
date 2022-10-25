@@ -95,14 +95,14 @@ progress::-moz-progress-bar {
                 <h3 class="text-md text-slate-200 mt-1 ml-4 font-bold">Música</h3>
                 <p class="text-sm text-slate-400  ml-4 " >Projeto Prog</p>
             </div>
-            <button id="play-icon"><span class="material-symbols-rounded text-4xl text-slate-200 absolute right-24 top-6">play_arrow</span></button>
+            <button ><span class="material-symbols-rounded text-4xl text-slate-200 absolute right-24 top-6" id="play-icon">play_arrow</span></button>
             <span class="material-symbols-rounded  text-4xl text-slate-200 absolute right-10 top-6">skip_next</span>
         </div>
-        <div id="duration" class="flex justify-between items-center text-slate-200 -mt-4 mb-2">
-            <span id="current-time" class="time">0:00</span>
-            <span id="duration" class="time">0:00</span>
+        <div id="duration-div" class="flex justify-between items-center text-slate-200 -mt-4 mb-2">
+            <span id="current" class="time"></span>
+            <span id="duration" class="time"></span>
         </div>
-        <progress id="seek-slider" max="100" value="23" class=" w-full h-0.5 mb-10 ">  </progress>
+        <progress id="seek-slider" max="1" value="0" class=" w-full h-0.5 mb-6 ">  </progress>
     </div>
 </body>
 <script src="script.js"></script>
