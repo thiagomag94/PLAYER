@@ -145,7 +145,7 @@ label01.addEventListener('click', () =>{
 //------------------------------toca musica 02 ---------------------
 
 label02.addEventListener('click', () =>{
-    hideFooter('musica01');
+    hideFooter('musica01'); 
     console.log(stateLista);
     if (stateLista==0){
         showFooter('music02', album.musica02.name);
