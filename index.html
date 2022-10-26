@@ -11,7 +11,7 @@
 </head>
 
 <style>
-    audio::-webkit-media-controls-mute-button {
+audio::-webkit-media-controls-mute-button {
         display:none;
         border-radius: 50%;
 }
@@ -56,7 +56,7 @@ progress::-moz-progress-bar {
 
 </style>
 
-<body class="bg-neutral-900 lg:flex flex-col justify-center items-center">
+<body class="bg-zinc-900 lg:flex flex-col justify-center items-center lg:bg-black">
     <main class="px-6 pt-20 w-full  flex flex-col justify-start  lg:w-4/6 lg:justify-center lg:items-center ">
         <div id="info-album" class="flex  justify-start  w-full mb-12 lg:justify-center ">
             <img src="/assets/imgs/capa projeto.PNG" class="w-40 shadow-md shadow-slate-500/40">
@@ -68,7 +68,7 @@ progress::-moz-progress-bar {
             </div>
 
         </div>
-        <button id="playAll" class="w-4/6 bg-red-800 text-slate-200 text-lg rounded-lg py-2 mb-8 flex justify-center items-center gap-2 drop-shadow-lg lg:hover:bg-red-600"><span class="material-symbols-outlined text-2xl ">
+        <button id="playAll" class="w-4/6 bg-red-800 text-slate-200 text-lg rounded-full py-2 mb-8 flex justify-center items-center gap-2 drop-shadow-lg lg:hover:bg-red-600"><span class="material-symbols-outlined text-2xl ">
             play_circle</span>Ouvir o álbum</button>
         <ul class="w-full text-white divide-y divide-slate-800">
             <li id="music01" class="pt-4 pb-4  flex justify-start items-center gap-8 text-lg cursor-pointer " ><h3>1</h3><h3>Interrupted Light</h3> </li>
@@ -79,14 +79,14 @@ progress::-moz-progress-bar {
         </ul> 
     </main>
     <div id="audio-player-container" class="w-screen h-40 p-4 bg-red-700  transform translate-y-40 fixed  bottom-0 pb-16 lg:h-36">
-        <div id="info-album-footer" class="flex  justify-start  w-full mb-8 pr-24">
+        <div id="info-album-footer" class="flex  justify-start  w-full mb-8 pr-20">
             <img src="/assets/imgs/capa projeto.PNG" class="w-16 h-16 shadow-md shadow-slate-500/40">
             <div id="info-text" class="flex flex-col">
                 <h3 class="text-md text-slate-200 mt-1 ml-4 font-bold" id="music-name">Música</h3>
                 <p class="text-sm text-slate-400  ml-4 " >Projeto Prog</p>
             </div>
-            <button ><span class="material-symbols-rounded text-4xl text-slate-200 absolute right-24 top-6" id="play-icon">pause</span></button>
-            <span id="skip-next" class="material-symbols-rounded  text-4xl text-slate-200 absolute right-10 top-6">skip_next</span>
+            <button ><span class="material-symbols-rounded text-4xl text-slate-200 absolute right-12 top-6 lg:right-24" id="play-icon">pause</span></button>
+            <span id="skip-next" class="material-symbols-rounded  text-4xl text-slate-200 absolute right-2 top-6 lg:right-12">skip_next</span>
         </div>
         <div id="duration-div" class="flex justify-between items-center text-slate-200 -mt-4 mb-2">
             <span id="current" class="time"></span>

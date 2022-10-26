@@ -1,5 +1,5 @@
 
-//----------------------Define os audios e suas propriedades-------------------------
+//---------------------- componentes-------------------------
 
 var audio = document.querySelector('audio')
 
@@ -7,11 +7,7 @@ var musicName = document.getElementById('music-name');
 var currentTimeSpan = document.getElementById('current');
 var durationTimeSpan = document.getElementById('duration')
 var label = Array.from(document.getElementsByTagName('li'))
-
-console.log(label)
-
-
-
+var displayFooter = document.getElementById('audio-player-container')
 var album ={
     'music01':{'name':'Interrupted Light', 'src': '/MUSICA 01.mp3', 'identificador':'01'},
     'music02':{'name':'Ending Theme Nylon Guitar', 'src':'/ENDING THEME.mp3', 'identificador':'02'},
@@ -20,6 +16,9 @@ var album ={
 }
 
 var albumSize = Object.keys(album).length
+
+
+
 // -----------------------------Seta os estados como iniciais---
 
 // guarda o estado do botão 'ouvir o álbum' (0 -não clicado, 1 - clicado)
@@ -46,18 +45,11 @@ var buttonPlayAll = document.getElementById('playAll');
 
 buttonPlayAll.addEventListener("click", () =>{ 
     
-    
-    
-    if (stateButton === 1){
-        stateButton = 0
-        console.log('hiding..')
-        
-
-    }
-    else {
-        stateButton = 1
-        console.log('showing...')
-    }
+    audio.setAttribute('src', album.music01.src)
+    audio.setAttribute('id', album.music01.identificador )
+    progressBar()
+    showFooter('music01')
+    audio.play()
 
 })
 
@@ -66,19 +58,38 @@ buttonPlayAll.addEventListener("click", () =>{
 const showFooter = (music) => {
     var displayFooter = document.getElementById('audio-player-container')
     musicName.innerText = album[music].name
+    displayFooter.classList.remove('transform', 'translate-y-32')
     displayFooter.classList.add('transform', '-translate-y-0')
     displayFooter.style.transition = 'all 1.618s ease'
     stateFooter = 1
     
 }
 
-const hideFooter = (music) => {
-    displayFooter = document.getElementById('audio-player-container')
-    playPause(music)
-    displayFooter.classList.remove('transform', '-translate-y-0')
-    displayFooter.style.transition = 'all 1.618s ease'
-    stateFooter = 0
-}
+//-----------------------------------some footer --------------------------
+
+
+displayFooter.addEventListener('click', function() {
+    if (stateFooter === 1){
+        displayFooter.classList.remove('transform', '-translate-y-0')
+        displayFooter.classList.add('transform', 'translate-y-32')
+        displayFooter.style.transition = 'all 1.618s ease'
+        stateFooter = 0
+    }
+    else {
+        displayFooter.classList.remove('transform', 'translate-y-32')
+        displayFooter.classList.add('transform', '-translate-y-0')
+        stateFooter = 1
+
+
+        
+
+    }
+    
+    
+    
+})
+
+
 
 //------------------------Atualiza Progress Bar ----------------------------
 
@@ -94,6 +105,8 @@ function progressBar () {
 
 })
 }
+
+
 
 //-------------------Calcular segundos e minutos-----------------------
 
