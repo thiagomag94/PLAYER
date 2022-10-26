@@ -14,11 +14,12 @@ console.log(label)
 
 var album ={
     'music01':{'name':'Interrupted Light', 'src': '/MUSICA 01.mp3', 'identificador':'01'},
-    'music02':{'name':'Dark Memories', 'src':'/ENDING THEME.mp3', 'identificador':'02'},
+    'music02':{'name':'Ending Theme Nylon Guitar', 'src':'/ENDING THEME.mp3', 'identificador':'02'},
+    'music03':{'name':'Used solo cover', 'src':'/solo used.mp3', 'identificador':'03'},
 
 }
 
-
+var albumSize = Object.keys(album).length
 // -----------------------------Seta os estados como iniciais---
 
 // guarda o estado do botão 'ouvir o álbum' (0 -não clicado, 1 - clicado)
@@ -87,7 +88,8 @@ function progressBar () {
         progressBar.setAttribute("value", this.currentTime / this.duration);
         durationTimeSpan.textContent = `${calculateTime(this.duration)}`
         currentTimeSpan.textContent = `${calculateTime(this.currentTime)} `
-        var audio_id = this.id
+        
+        
         
 
 })
@@ -139,14 +141,42 @@ label.forEach(function(li){
 
 
 //------------------------------botao avançar ---------------------
-
-var skip = document.getElementById('skip-next');
-skip.addEventListener('click', () => {
-    audio['musica'+audio_id]
+audio.addEventListener('timeupdate', function() {
     
-
-
-
+    var skip = document.getElementById('skip-next');
+    var audio_id = this.id
+    var id_increase = '0'+(parseInt(audio_id)+1).toString()
+    skip.addEventListener('click', () => {
+        playIcon.textContent = 'pause';
+        audio.setAttribute('src', album['music'+id_increase].src)
+        audio.setAttribute('id', album['music'+id_increase].identificador )
+        musicName.innerText = album['music' + id_increase].name
+        audio.play()
 }
 
 )
+})
+
+// -----------------------------tocar proxima ao acabar -------------
+
+audio.addEventListener('ended', function() {
+    
+    var audio_id = this.id
+    var id_increased = '0'+(parseInt(audio_id)+1).toString()
+    if (parseInt(id_increased) > albumSize ){
+        playIcon.textContent = 'play_arrow';
+    }
+    else {
+        playIcon.textContent = 'pause';
+        audio.setAttribute('src', album['music'+id_increased].src)
+        audio.setAttribute('id', album['music'+id_increased].identificador )
+        musicName.innerText = album['music' + id_increased].name
+        audio.play()
+    }
+    
+    
+    
+}
+)
+
+
