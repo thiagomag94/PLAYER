@@ -9,9 +9,9 @@ var durationTimeSpan = document.getElementById('duration')
 var label = Array.from(document.getElementsByTagName('li'))
 var displayFooter = document.getElementById('audio-player-container')
 var album ={
-    'music01':{'name':'Interrupted Light', 'src': '/MUSICA 01.mp3', 'identificador':'01'},
-    'music02':{'name':'Ending Theme Nylon Guitar', 'src':'/ENDING THEME.mp3', 'identificador':'02'},
-    'music03':{'name':'Used solo cover', 'src':'/solo used.mp3', 'identificador':'03'},
+    'music01':{'name':'Interrupted Light', 'src': 'MUSICA 01.mp3', 'identificador':'01'},
+    'music02':{'name':'Ending Theme Nylon Guitar', 'src':'ENDING THEME.mp3', 'identificador':'02'},
+    'music03':{'name':'Used solo cover', 'src':'solo used.mp3', 'identificador':'03'},
 
 }
 
@@ -64,30 +64,6 @@ const showFooter = (music) => {
     stateFooter = 1
     
 }
-
-//-----------------------------------some footer --------------------------
-
-
-displayFooter.addEventListener('click', function() {
-    if (stateFooter === 1){
-        displayFooter.classList.remove('transform', '-translate-y-0')
-        displayFooter.classList.add('transform', 'translate-y-32')
-        displayFooter.style.transition = 'all 1.618s ease'
-        stateFooter = 0
-    }
-    else {
-        displayFooter.classList.remove('transform', 'translate-y-32')
-        displayFooter.classList.add('transform', '-translate-y-0')
-        stateFooter = 1
-
-
-        
-
-    }
-    
-    
-    
-})
 
 
 
@@ -193,3 +169,20 @@ audio.addEventListener('ended', function() {
 )
 
 
+// -------------------------------Adiciona duração da música na lista ----------------------
+
+var array_audios = []
+Object.keys(album).forEach(key => {
+    var audio_temp = new Audio(album[key].src)
+    audio_temp.addEventListener('loadedmetadata', function() {
+        var audio_duration = calculateTime(this.duration).toString()
+        console.log(audio_duration)
+        var li = document.getElementById(key)
+        var newLi = document.createElement('li') 
+        newLi.classList.add('absolute', 'right-4', 'lg:right-80')
+        newLi.textContent = audio_duration
+        li.appendChild(newLi)
+    }
+    )
+    
+})
