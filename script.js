@@ -45,10 +45,10 @@ var buttonPlayAll = document.getElementById('playAll');
 
 buttonPlayAll.addEventListener("click", () =>{ 
     
-    audio.setAttribute('src', album.music01.src)
-    audio.setAttribute('id', album.music01.identificador )
+    audio.setAttribute('src', album.music00.src)
+    audio.setAttribute('id', album.music00.identificador )
     progressBar()
-    showFooter('music01')
+    showFooter('music00')
     audio.play()
 
 })
