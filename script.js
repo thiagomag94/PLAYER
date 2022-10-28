@@ -9,9 +9,9 @@ var durationTimeSpan = document.getElementById('duration')
 var label = Array.from(document.getElementsByTagName('li'))
 var displayFooter = document.getElementById('audio-player-container')
 var album ={
+    'music00':{'name':'Moment of a Miracle', 'src': 'MUSICA 00.mp3', 'identificador':'00'},
     'music01':{'name':'Interrupted Light', 'src': 'MUSICA 01.mp3', 'identificador':'01'},
-    'music02':{'name':'Ending Theme Nylon Guitar', 'src':'ENDING THEME.mp3', 'identificador':'02'},
-    'music03':{'name':'Used solo cover', 'src':'solo used.mp3', 'identificador':'03'},
+    
 
 }
 
