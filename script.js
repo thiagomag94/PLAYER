@@ -21,20 +21,13 @@ var albumSize = Object.keys(album).length
 
 // -----------------------------Seta os estados como iniciais---
 
+
 // guarda o estado do botão 'ouvir o álbum' (0 -não clicado, 1 - clicado)
 var stateButton = 0
 //guarda o estado do footer (0 - não aparece, 1 - aparece)
 var stateFooter = 0
 
 var stateLista = 0
-
-
-
-
-
-
-
-
 
 //------------------------------Botão Ouvir o Álbum ---------
 
@@ -109,7 +102,7 @@ const calculateTime = (secs) => {
     }
 })
 
-// ----------------------------toca musica 01 -------------------------
+// ----------------------------toca musica  -------------------------
 label.forEach(function(li){
     li.addEventListener('click', () =>{
         //-------------seta o botão pause inicialmente
@@ -123,6 +116,8 @@ label.forEach(function(li){
             progressBar()
             showFooter(id)
             audio.play()
+            li.classList.add('bg-stone-800')
+           
         }
         
     })
@@ -161,6 +156,7 @@ audio.addEventListener('ended', function() {
         audio.setAttribute('id', album['music'+id_increased].identificador )
         musicName.innerText = album['music' + id_increased].name
         audio.play()
+        
     }
     
     
@@ -186,3 +182,6 @@ Object.keys(album).forEach(key => {
     )
     
 })
+
+//----------------------------------musica selecionada ao clicar ------------------------
+
