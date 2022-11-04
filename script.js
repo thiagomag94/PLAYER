@@ -37,6 +37,21 @@ var buttonPlayAll = document.getElementById('playAll');
 
 
 buttonPlayAll.addEventListener("click", () =>{ 
+
+    // se o ícone de play estiver ativo, muda para pause assim que clicar no botão "Ouvir álbum"
+    if (playIcon.textContent == 'play_arrow'){
+        playIcon.textContent = 'pause';
+        
+    }
+
+    // remove o selecionado de todas as músicas
+    label.forEach(li => {
+        li.classList.remove('bg-neutral-900')
+       
+    })
+
+    //adiciona o selecionado apenas na primeira
+    label[0].classList.add('bg-neutral-900')
     
     audio.setAttribute('src', album.music00.src)
     audio.setAttribute('id', album.music00.identificador )
@@ -116,7 +131,7 @@ label.forEach(function(li){
             progressBar()
             showFooter(id)
             audio.play()
-            li.classList.add('bg-stone-800')
+            
            
         }
         
@@ -167,15 +182,14 @@ audio.addEventListener('ended', function() {
 
 // -------------------------------Adiciona duração da música na lista ----------------------
 
-var array_audios = []
+
 Object.keys(album).forEach(key => {
     var audio_temp = new Audio(album[key].src)
     audio_temp.addEventListener('loadedmetadata', function() {
         var audio_duration = calculateTime(this.duration).toString()
-        console.log(audio_duration)
         var li = document.getElementById(key)
         var newLi = document.createElement('li') 
-        newLi.classList.add('absolute', 'right-4', 'lg:right-80')
+        newLi.classList.add('absolute', 'right-8','text-slate-500' ,'lg:right-80')
         newLi.textContent = audio_duration
         li.appendChild(newLi)
     }
@@ -185,3 +199,14 @@ Object.keys(album).forEach(key => {
 
 //----------------------------------musica selecionada ao clicar ------------------------
 
+label.forEach(li =>{
+    li.addEventListener('click', function(){
+        label.forEach(li => {
+            li.classList.remove('bg-neutral-900')
+           
+        })
+        li.classList.add('bg-neutral-900')
+        
+    })
+
+})
