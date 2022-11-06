@@ -11,7 +11,6 @@ var displayFooter = document.getElementById('audio-player-container')
 var album ={
     'music00':{'name':'Moment of a Miracle', 'src': 'MUSICA 00.mp3', 'identificador':'00'},
     'music01':{'name':'Interrupted Light', 'src': 'MUSICA 01.mp3', 'identificador':'01'},
-    
 
 }
 
@@ -166,11 +165,22 @@ audio.addEventListener('ended', function() {
         playIcon.textContent = 'play_arrow';
     }
     else {
+        
+        //remove seleção da faixa que terminou e coloca na que começou a tocar
+        label[parseInt(audio_id)].classList.remove('bg-neutral-900')
+        label[parseInt(audio_id)+1].classList.add('bg-neutral-900')
+        
+               
+               
+           
+        
+                
         playIcon.textContent = 'pause';
         audio.setAttribute('src', album['music'+id_increased].src)
         audio.setAttribute('id', album['music'+id_increased].identificador )
         musicName.innerText = album['music' + id_increased].name
         audio.play()
+        
         
     }
     
@@ -189,7 +199,7 @@ Object.keys(album).forEach(key => {
         var audio_duration = calculateTime(this.duration).toString()
         var li = document.getElementById(key)
         var newLi = document.createElement('li') 
-        newLi.classList.add('absolute', 'right-8','text-slate-500' ,'lg:right-80')
+        newLi.classList.add('absolute', 'right-8','text-slate-500')
         newLi.textContent = audio_duration
         li.appendChild(newLi)
     }

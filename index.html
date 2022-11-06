@@ -11,72 +11,87 @@
 </head>
 
 <style>
-audio::-webkit-media-controls-mute-button {
+    audio::-webkit-media-controls-mute-button {
         display:none;
         border-radius: 50%;
-}
-audio::-webkit-media-controls-panel {
+    }
+    audio::-webkit-media-controls-panel {
         display:flex;
         
         background-color: rgb(32, 28, 28)
-}  
-audio::-webkit-media-controls-volume-slider{
-    visibility: hidden;
+    }  
+    audio::-webkit-media-controls-volume-slider{
+        visibility: hidden;
+    }
+
+    /* For Firefox */
+    progress::-moz-progress-bar {
+        background: #FFF;
+    }
+  
+    /* For Chrome or Safari */
+    progress::-webkit-progress-value {
+        background: #FFF;
+    }
+  
+    /*icones google */
+    .material-symbols-rounded {
+        font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+    }
+
+    .material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
 }
 
-/* For Firefox */
-progress::-moz-progress-bar {
-    background: #FFF;
-        }
-  
-/* For Chrome or Safari */
- progress::-webkit-progress-value {
-    background: #FFF;
-}
-  
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
 
-
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: black; 
+    }
     
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: gray; 
+    }
 
-.material-symbols-rounded {
-  font-variation-settings:
-  'FILL' 1,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
-}
-
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 1,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
-}
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+    }
 
 </style>
 
 <body class="bg-black lg:flex flex-col justify-center items-center">
-    <main class="pl-6 pr-4 pt-20 w-full  flex flex-col justify-start  lg:w-4/6 lg:justify-center lg:items-center ">
+    <main class="pl-6 pr-4 pt-20 w-full  flex flex-col justify-start  lg:w-4/5  lg:justify-center lg:items-center xl:w-4/6">
         <div id="info-album" class="flex  justify-start  w-full mb-12 lg:justify-center ">
-            <img src="/assets/imgs/capa projeto.PNG" class="w-40 shadow-md shadow-slate-500/40">
+            <img src="/assets/imgs/Wk1.png" class="w-40 shadow-md">
             <div id="info-text" class="flex flex-col">
-                <h3 class="text-2xl text-slate-200 mt-4 ml-4 font-bold">Projeto Prog</h3>
+                <h3 class="text-xl text-slate-200 mt-4 ml-4 font-bold md:text-2xl">Projeto Prog</h3>
                 <p class="text-sm text-slate-400 mt-4 ml-4 " >Vocals: Adriano Forte</p>
                 <p class="text-sm text-slate-400 mt-4 ml-4 ">Bass: Geo Silva </p>
                 <p class="text-sm text-slate-400 mt-4 ml-4">Guitars: Thiago Borges</p>
             </div>
 
         </div>
-        <button id="playAll" class="w-4/6 bg-red-800 text-slate-200 text-lg rounded-full py-2 mb-8 flex justify-center items-center gap-2 drop-shadow-lg lg:hover:bg-red-600 lg:w-2/5"><span class="material-symbols-outlined text-2xl ">
+        <button id="playAll" class="w-4/6 bg-red-800 text-slate-200 text-lg rounded-full py-2 mb-8 flex justify-center items-center gap-2 drop-shadow-lg md:mb-16 lg:hover:bg-red-600 lg:w-2/5  xl:mb-24"><span class="material-symbols-outlined text-2xl ">
             play_circle</span>Ouvir o álbum</button>
-        <ul class="w-full text-white divide-y divide-slate-800">
-            <li id="music00" class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg font-semibold cursor-pointer lg:pl-4  " ><h3 class="ml-2">1</h3><h3>Moment of a Miracle</h3></li>
-            <li id="music01" class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg font-semibold cursor-pointer lg:pl-4  " ><h3 class="ml-2">2</h3><h3>Interrupted Light</h3></li>
-            <audio id="" src=""    preload="metadata"></audio>
-    
-           
-        </ul> 
+        <ul class="w-full text-white divide-y divide-slate-800 h-64 overflow-y-scroll relative">
+            <li id="music00" class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg font-normal cursor-pointer relative lg:pl-4 lg:text-md lg:font-semibold  " ><h3 class="ml-2">1</h3><h3>Moment of a Miracle</h3></li>
+            <li id="music01" class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg font-normal cursor-pointer relative lg:pl-4 lg:text-md lg:font-semibold " ><h3 class="ml-2">2</h3><h3>Interrupted Light</h3></li>  
+            <audio id="" src=""    preload="metadata"></audio> 
+        </ul>
+      
     </main>
     <div id="audio-player-container" class="w-screen h-40 p-4 bg-red-700  transform translate-y-40 fixed  bottom-0 pb-16 lg:h-36">
         <div id="info-album-footer" class="flex  justify-start  w-full mb-8 pr-20">
