@@ -45,12 +45,12 @@ buttonPlayAll.addEventListener("click", () =>{
 
     // remove o selecionado de todas as músicas
     label.forEach(li => {
-        li.classList.remove('bg-neutral-900')
+        li.classList.remove('bg-zinc-900')
        
     })
 
     //adiciona o selecionado apenas na primeira
-    label[0].classList.add('bg-neutral-900')
+    label[0].classList.add('bg-zinc-900')
     
     audio.setAttribute('src', album.music00.src)
     audio.setAttribute('id', album.music00.identificador )
@@ -167,8 +167,8 @@ audio.addEventListener('ended', function() {
     else {
         
         //remove seleção da faixa que terminou e coloca na que começou a tocar
-        label[parseInt(audio_id)].classList.remove('bg-neutral-900')
-        label[parseInt(audio_id)+1].classList.add('bg-neutral-900')
+        label[parseInt(audio_id)].classList.remove('bg-zinc-900')
+        label[parseInt(audio_id)+1].classList.add('bg-zinc-900')
         
                
                
@@ -212,10 +212,10 @@ Object.keys(album).forEach(key => {
 label.forEach(li =>{
     li.addEventListener('click', function(){
         label.forEach(li => {
-            li.classList.remove('bg-neutral-900')
+            li.classList.remove('bg-zinc-900')
            
         })
-        li.classList.add('bg-neutral-900')
+        li.classList.add('bg-zinc-900')
         
     })
 

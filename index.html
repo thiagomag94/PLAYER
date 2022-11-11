@@ -73,10 +73,10 @@
 </style>
 
 <body class="bg-black lg:flex flex-col justify-center items-center">
-    <main class="pl-6 pr-4 pt-20 w-full  flex flex-col justify-start  lg:w-4/5  lg:justify-center lg:items-center xl:w-4/6">
+    <main class="pl-6 pr-4 pt-20 w-full  flex flex-col justify-start  lg:w-4/5  lg:justify-center  lg:items-center xl:pt-32 xl:flex xl:flex-row xl:justify-around xl:w-4/5">
         <div id="info-album" class="flex  justify-start  w-full mb-12 lg:justify-center ">
-            <img src="/assets/imgs/Wk1.png" class="w-40 shadow-md">
-            <div id="info-text" class="flex flex-col">
+            <img src="/assets/imgs/Wk1.png" class="w-40 h-40 shadow-md xl:h-80 xl:w-80 xl:border xl:border-slate-800">
+            <div id="info-text" class="flex flex-col xl:hidden">
                 <h3 class="text-xl text-slate-200 mt-4 ml-4 font-bold md:text-2xl">Projeto Prog</h3>
                 <p class="text-sm text-slate-400 mt-4 ml-4 " >Vocals: Adriano Forte</p>
                 <p class="text-sm text-slate-400 mt-4 ml-4 ">Bass: Geo Silva </p>
@@ -84,14 +84,63 @@
             </div>
 
         </div>
-        <button id="playAll" class="w-4/6 bg-red-800 text-slate-200 text-lg rounded-full py-2 mb-8 flex justify-center items-center gap-2 drop-shadow-lg md:mb-16 lg:hover:bg-red-600 lg:w-2/5  xl:mb-24"><span class="material-symbols-outlined text-2xl ">
+        <button id="playAll" class="w-4/6 bg-red-800 text-slate-200 text-lg rounded-full py-2 mb-2 flex justify-center items-center gap-2 drop-shadow-lg md:mb-16 lg:hover:bg-red-600 lg:w-2/5  xl:mb-24 xl:hidden"><span class="material-symbols-outlined text-2xl ">
             play_circle</span>Ouvir o álbum</button>
-        <ul class="w-full text-white divide-y divide-slate-800 h-64 overflow-y-scroll relative">
-            <li id="music00" class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg font-normal cursor-pointer relative lg:pl-4 lg:text-md lg:font-semibold  " ><h3 class="ml-2">1</h3><h3>Moment of a Miracle</h3></li>
-            <li id="music01" class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg font-normal cursor-pointer relative lg:pl-4 lg:text-md lg:font-semibold " ><h3 class="ml-2">2</h3><h3>Interrupted Light</h3></li>  
-            <audio id="" src=""    preload="metadata"></audio> 
-        </ul>
-      
+        
+        <section class="md:text-white flex flex-col justify-center items-center lg:w-full lg:relative xl:w-3/5">
+            <div id="header-menu" class="lg:w-full lg:flex lg:justify-around lg:items-center lg:bg-zinc-900 xl:bg-black ">
+                <div class="lg:w-full lg:h-full   text-center cursor-pointer  xl:pb-2 xl:border-b xl:border-zinc-700 hover:border-red-600">Músicas</div>
+                <div class="lg:w-full lg:h-full  text-center cursor-pointer  xl:pb-2 xl:border-b xl:border-zinc-700 hover:border-red-600">Letras</div>
+
+            </div>  
+            <div id="container-musica-letra" class="w-full relative">
+                <ul class="w-full text-white divide-y divide-slate-800 h-64 overflow-y-scroll">
+                    <li id="music00" class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg font-normal cursor-pointer relative lg:pl-4 lg:text-lg lg:font-semibold xl:text-md " ><h3 class="ml-2">1</h3><h3>Moment of a Miracle</h3></li>
+                    <li id="music01" class="pt-4 pb-4 flex justify-start items-center gap-8 text-lg font-normal cursor-pointer relative lg:pl-4 lg:text-lg lg:font-semibold xl:text-md" ><h3 class="ml-2">2</h3><h3>Interrupted Light</h3></li>  
+                    <audio id="" src=""    preload="metadata"></audio> 
+                </ul>
+                <div id="letras" class="absolute top-0 hidden">
+                    <p>
+                        I thought I'd seen hell<br>
+                        Thought I knew it all<br>
+                        Now I know too well<br>
+                        Hell is to wake up<br>
+                        But it makes all the difference<br>
+                        Tasting the tears in my mouth<br>
+                        Taking the weight on my shoulders<br>
+                        The hours and days of your life<br>
+                        Don't necessarily make you older<br>
+                        I'm sick of running away<br>
+                        Along these bloody streets<br>
+                        I'm sick of predators and prey<br>
+                        Of being everybody's end!<br>
+                        I've washed my hands of your blood<br>
+                        Thought it would leave me clean<br>
+                        But with time on my hands<br>
+                        It turned to mud forming this crust of sin<br>
+                        Now, to be truly free<br>
+                        I'll let it come to me<br>
+                        So, break me if you must<br>
+                        When you break this crust<br>
+                        Freedom is to see<br>
+                        Hear this voice, see this man<br>
+                        Standing before you I'm just a child<br>
+                        Just a man learning to yield<br>
+                        I hate these hands soaked in blood<br>
+                        I hate what these eyes have seen<br>
+                        Up to my knees in filth and mud<br>
+                        How it hurts to become clean<br>
+                        I was always on my mind<br>
+                        But never on my side<br>
+                        Run, but if you run away<br>
+                        You'll always have to hide<br>
+                        So if you need to run<br>
+                        Run for help! <br>
+                    </p>
+                </div>
+            </div>
+            
+        </section> 
     </main>
     <div id="audio-player-container" class="w-screen h-40 p-4 bg-red-700  transform translate-y-40 fixed  bottom-0 pb-16 lg:h-36">
         <div id="info-album-footer" class="flex  justify-start  w-full mb-8 pr-20">
@@ -101,13 +150,13 @@
                 <p class="text-sm text-slate-400  ml-4 " >Projeto Prog</p>
             </div>
             <button ><span class="material-symbols-rounded text-4xl text-slate-200 absolute right-12 top-6 lg:right-24" id="play-icon">pause</span></button>
-            <span id="skip-next" class="material-symbols-rounded  text-4xl text-slate-200 absolute right-2 top-6 lg:right-12">skip_next</span>
+            <span id="skip-next" class="material-symbols-rounded cursor-pointer text-4xl text-slate-200 absolute right-2 top-6 lg:right-12">skip_next</span>
         </div>
         <div id="duration-div" class="flex justify-between items-center text-slate-200 -mt-4 mb-2">
             <span id="current" class="time"></span>
             <span id="duration" class="time">00:00</span>
         </div>
-        <progress id="seek-slider" max="1" value="0" class=" w-full h-0.5 mb-6 ">  </progress>
+        <progress id="seek-slider" max="1" value="0" class=" w-full h-0.5 mb-6 bg-red-400">  </progress>
     </div>
 </body>
 <script src="script.js"></script>
