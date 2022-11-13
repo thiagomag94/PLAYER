@@ -9,8 +9,11 @@ var durationTimeSpan = document.getElementById('duration')
 var label = Array.from(document.getElementsByTagName('li'))
 var displayFooter = document.getElementById('audio-player-container')
 var album ={
-    'music00':{'name':'Moment of a Miracle', 'src': 'MUSICA 00.mp3', 'identificador':'00'},
-    'music01':{'name':'Interrupted Light', 'src': 'MUSICA 01.mp3', 'identificador':'01'},
+    'music00':{'name':'Moment of a Miracle', 
+               'src': 'MUSICA 00.mp3',
+               'identificador':'00',
+               'lyrics':`Música 1 sem letra por enquanto<br>`},
+    'music01':{'name':'Interrupted Light', 'src': 'MUSICA 01.mp3', 'identificador':'01', 'lyrics':`Musica 2 sem letra por enquanto`},
 
 }
 
@@ -244,6 +247,11 @@ lyricsHeader.addEventListener('click', function(){
     musicsHeader.classList.add('xl:border-zinc-700')
 
 })
+audio.addEventListener('timeupdate', function() {
+    
+    var audio_id = this.id
+    lyricsDiv.innerHTML = `<p>${album['music'+audio_id].lyrics}</p>`})
+    console.log('deu certo')
 
 //----------------------------------------mostrar musicas---------------------------------
 
