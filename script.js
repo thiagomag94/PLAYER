@@ -34,13 +34,13 @@ var stateLista = 0
 // pega o botão 'Ouvir o álbum'
 var buttonPlayAll = document.getElementById('playAll');
 
-
+const playingNow = `<span class="material-symbols-outlined text-2xl ">play_circle</span><span>Ouvir o álbum</span>`
 buttonPlayAll.addEventListener("click", () =>{ 
 
     // se o ícone de play estiver ativo, muda para pause assim que clicar no botão "Ouvir álbum"
     if (playpauseIcon.textContent == 'play_arrow'){
         playpauseIcon.textContent = 'pause';
-        
+        buttonPlayAll.innerHTML = `<span class="material-symbols-outlined text-2xl animate-pulse">equalizer</span><span>Tocando agora...</span>`
     }
 
     // remove o selecionado de todas as músicas
@@ -109,10 +109,13 @@ const calculateTime = (secs) => {
     if (playpauseIcon.textContent == 'pause'){
         playpauseIcon.textContent = 'play_arrow';
         audio.pause()
+        buttonPlayAll.innerHTML = playingNow
     }
     else {
         playpauseIcon.textContent = 'pause';
         audio.play()
+        buttonPlayAll.innerHTML = `<span class="material-symbols-outlined text-2xl animate-pulse">equalizer</span><span>Tocando agora...</span>`
+        
     }
 })
 
@@ -122,7 +125,7 @@ label.forEach(function(li){
         //-------------seta o botão pause inicialmente
         playpauseIcon.textContent = 'pause';
         var id = li.id
-       
+        
         if (stateLista==0){
             console.log(album[id])
             audio.setAttribute('src', album[id].src)
@@ -130,6 +133,7 @@ label.forEach(function(li){
             progressBar()
             showFooter(id)
             audio.play()
+            buttonPlayAll.innerHTML = `<span class="material-symbols-outlined text-2xl animate-pulse ">equalizer</span><span>Tocando agora...</span>`
             
            
         }
@@ -150,6 +154,9 @@ audio.addEventListener('timeupdate', function() {
         audio.setAttribute('id', album['music'+id_increase].identificador )
         musicName.innerText = album['music' + id_increase].name
         audio.play()
+        buttonPlayAll.innerHTML = `<span class="material-symbols-outlined text-2xl ">equalizer</span><span>Tocando agora...</span>`
+        label[parseInt(audio_id)].classList.remove('bg-neutral-900')
+        label[parseInt(audio_id)+1].classList.add('bg-neutral-900')
 }
 
 )
@@ -226,12 +233,31 @@ const lyricsHeader = document.getElementById('lyrics')
 const lyricsDiv = document.getElementById('div-lyrics')
 const musicsDiv = document.getElementById('div-musics')
 lyricsHeader.addEventListener('click', function(){
-    
+    lyricsDiv.classList.remove('hidden')
     lyricsDiv.classList.remove('opacity-0')
     lyricsDiv.classList.add('opacity-100')
     lyricsHeader.classList.remove('xl:border-zinc-700')
     lyricsHeader.classList.add('xl:border-amber-300')
     musicsDiv.classList.remove('opacity-100')
     musicsDiv.classList.add('opacity-0')
+    musicsHeader.classList.remove('xl:border-amber-300')
+    musicsHeader.classList.add('xl:border-zinc-700')
+
+})
+
+//----------------------------------------mostrar musicas---------------------------------
+
+
+const musicsHeader = document.getElementById('musics')
+musicsHeader.addEventListener('click', function(){
+    lyricsDiv.classList.add('hidden')
+    lyricsDiv.classList.remove('opacity-100')
+    lyricsDiv.classList.add('opacity-0')
+    lyricsHeader.classList.add('xl:border-zinc-700')
+    lyricsHeader.classList.remove('xl:border-amber-300')
+    musicsDiv.classList.add('opacity-100')
+    musicsDiv.classList.remove('opacity-0')
+    musicsHeader.classList.remove('xl:border-zinc-700')
+    musicsHeader.classList.add('xl:border-amber-300')
 
 })
