@@ -33,13 +33,18 @@ var stateLista = 0
 
 // pega o botão 'Ouvir o álbum'
 var buttonPlayAll = document.getElementById('playAll');
+const playingNowtext = `<span class="material-symbols-outlined text-2xl ">
+play_circle</span><span>Ouvir o álbum</span>`
 
 
 buttonPlayAll.addEventListener("click", () =>{ 
 
     // se o ícone de play estiver ativo, muda para pause assim que clicar no botão "Ouvir álbum"
-    if (playIcon.textContent == 'play_arrow'){
-        playIcon.textContent = 'pause';
+    if (playpauseIcon.textContent == 'play_arrow'){
+        playpauseIcon.textContent = 'pause';
+        buttonPlayAll.innerHTML = `<span class="material-symbols-outlined text-2xl ">equalizer
+        </span><span>Tocando agora...</span>`
+        console.log('sim')
         
     }
 
@@ -73,6 +78,14 @@ const showFooter = (music) => {
 }
 
 
+//-------------------Calcular segundos e minutos-----------------------
+
+const calculateTime = (secs) => {
+    const minutes = Math.floor(secs / 60);
+    const seconds = Math.floor(secs % 60);
+    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+    return `${minutes}:${returnedSeconds}`;
+}
 
 //------------------------Atualiza Progress Bar ----------------------------
 
@@ -89,30 +102,24 @@ function progressBar () {
 })
 }
 
-
-
-//-------------------Calcular segundos e minutos-----------------------
-
-const calculateTime = (secs) => {
-    const minutes = Math.floor(secs / 60);
-    const seconds = Math.floor(secs % 60);
-    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-    return `${minutes}:${returnedSeconds}`;
-}
-
 //--------------------muda botão play/pause---------------------------
 
 
-    var playIcon = document.getElementById('play-icon');
-    playIcon.addEventListener('click', () =>{
+    var playpauseIcon = document.getElementById('play-icon');
+    playpauseIcon.addEventListener('click', () =>{
     console.log('evento disparado')
-    if (playIcon.textContent == 'pause'){
-        playIcon.textContent = 'play_arrow';
+    if (playpauseIcon.textContent == 'pause'){
+        playpauseIcon.textContent = 'play_arrow';
         audio.pause()
+        buttonPlayAll.innerHTML = playingNowtext
+
     }
     else {
-        playIcon.textContent = 'pause';
+        playpauseIcon.textContent = 'pause';
         audio.play()
+        buttonPlayAll.innerHTML = `<span class="material-symbols-rounded text-2xl ">
+        equalizer</span><span>Tocando agora...</span>`
+
     }
 })
 
@@ -120,7 +127,7 @@ const calculateTime = (secs) => {
 label.forEach(function(li){
     li.addEventListener('click', () =>{
         //-------------seta o botão pause inicialmente
-        playIcon.textContent = 'pause';
+        playpauseIcon.textContent = 'pause';
         var id = li.id
        
         if (stateLista==0){
@@ -145,7 +152,7 @@ audio.addEventListener('timeupdate', function() {
     var audio_id = this.id
     var id_increase = '0'+(parseInt(audio_id)+1).toString()
     skip.addEventListener('click', () => {
-        playIcon.textContent = 'pause';
+        playpauseIcon.textContent = 'pause';
         audio.setAttribute('src', album['music'+id_increase].src)
         audio.setAttribute('id', album['music'+id_increase].identificador )
         musicName.innerText = album['music' + id_increase].name
@@ -162,20 +169,15 @@ audio.addEventListener('ended', function() {
     var audio_id = this.id
     var id_increased = '0'+(parseInt(audio_id)+1).toString()
     if (parseInt(id_increased) > albumSize ){
-        playIcon.textContent = 'play_arrow';
+        playpauseIcon.textContent = 'play_arrow';
     }
     else {
-        
         //remove seleção da faixa que terminou e coloca na que começou a tocar
         label[parseInt(audio_id)].classList.remove('bg-zinc-900')
         label[parseInt(audio_id)+1].classList.add('bg-zinc-900')
         
-               
-               
-           
-        
                 
-        playIcon.textContent = 'pause';
+        playpauseIcon.textContent = 'pause';
         audio.setAttribute('src', album['music'+id_increased].src)
         audio.setAttribute('id', album['music'+id_increased].identificador )
         musicName.innerText = album['music' + id_increased].name
@@ -220,3 +222,24 @@ label.forEach(li =>{
     })
 
 })
+
+//----------------------------------------mostrar letras---------------------------------
+
+const lyricsHeader = document.getElementById('lyrics')
+const lyricsDiv = document.getElementById('div-lyrics')
+const musicsDiv = document.getElementById('div-musics')
+lyricsHeader.addEventListener('click', function(){
+    
+    lyricsDiv.classList.remove('opacity-0')
+    lyricsDiv.classList.add('opacity-100')
+    lyricsHeader.classList.remove('xl:border-zinc-700')
+    lyricsHeader.classList.add('xl:border-amber-300')
+    musicsDiv.classList.remove('opacity-100')
+    musicsDiv.classList.add('opacity-0')
+
+
+
+   
+
+})
+
