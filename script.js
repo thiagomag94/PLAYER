@@ -33,8 +33,6 @@ var stateLista = 0
 
 // pega o botão 'Ouvir o álbum'
 var buttonPlayAll = document.getElementById('playAll');
-const playingNowtext = `<span class="material-symbols-outlined text-2xl ">
-play_circle</span><span>Ouvir o álbum</span>`
 
 
 buttonPlayAll.addEventListener("click", () =>{ 
@@ -42,20 +40,17 @@ buttonPlayAll.addEventListener("click", () =>{
     // se o ícone de play estiver ativo, muda para pause assim que clicar no botão "Ouvir álbum"
     if (playpauseIcon.textContent == 'play_arrow'){
         playpauseIcon.textContent = 'pause';
-        buttonPlayAll.innerHTML = `<span class="material-symbols-outlined text-2xl ">equalizer
-        </span><span>Tocando agora...</span>`
-        console.log('sim')
         
     }
 
     // remove o selecionado de todas as músicas
     label.forEach(li => {
-        li.classList.remove('bg-zinc-900')
+        li.classList.remove('bg-neutral-900')
        
     })
 
     //adiciona o selecionado apenas na primeira
-    label[0].classList.add('bg-zinc-900')
+    label[0].classList.add('bg-neutral-900')
     
     audio.setAttribute('src', album.music00.src)
     audio.setAttribute('id', album.music00.identificador )
@@ -78,14 +73,6 @@ const showFooter = (music) => {
 }
 
 
-//-------------------Calcular segundos e minutos-----------------------
-
-const calculateTime = (secs) => {
-    const minutes = Math.floor(secs / 60);
-    const seconds = Math.floor(secs % 60);
-    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-    return `${minutes}:${returnedSeconds}`;
-}
 
 //------------------------Atualiza Progress Bar ----------------------------
 
@@ -102,6 +89,17 @@ function progressBar () {
 })
 }
 
+
+
+//-------------------Calcular segundos e minutos-----------------------
+
+const calculateTime = (secs) => {
+    const minutes = Math.floor(secs / 60);
+    const seconds = Math.floor(secs % 60);
+    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+    return `${minutes}:${returnedSeconds}`;
+}
+
 //--------------------muda botão play/pause---------------------------
 
 
@@ -111,15 +109,10 @@ function progressBar () {
     if (playpauseIcon.textContent == 'pause'){
         playpauseIcon.textContent = 'play_arrow';
         audio.pause()
-        buttonPlayAll.innerHTML = playingNowtext
-
     }
     else {
         playpauseIcon.textContent = 'pause';
         audio.play()
-        buttonPlayAll.innerHTML = `<span class="material-symbols-rounded text-2xl ">
-        equalizer</span><span>Tocando agora...</span>`
-
     }
 })
 
@@ -172,9 +165,14 @@ audio.addEventListener('ended', function() {
         playpauseIcon.textContent = 'play_arrow';
     }
     else {
+        
         //remove seleção da faixa que terminou e coloca na que começou a tocar
-        label[parseInt(audio_id)].classList.remove('bg-zinc-900')
-        label[parseInt(audio_id)+1].classList.add('bg-zinc-900')
+        label[parseInt(audio_id)].classList.remove('bg-neutral-900')
+        label[parseInt(audio_id)+1].classList.add('bg-neutral-900')
+        
+               
+               
+           
         
                 
         playpauseIcon.textContent = 'pause';
@@ -214,13 +212,12 @@ Object.keys(album).forEach(key => {
 label.forEach(li =>{
     li.addEventListener('click', function(){
         label.forEach(li => {
-            li.classList.remove('bg-zinc-900')
+            li.classList.remove('bg-neutral-900')
            
         })
-        li.classList.add('bg-zinc-900')
+        li.classList.add('bg-neutral-900')
         
     })
-
 })
 
 //----------------------------------------mostrar letras---------------------------------
@@ -237,9 +234,4 @@ lyricsHeader.addEventListener('click', function(){
     musicsDiv.classList.remove('opacity-100')
     musicsDiv.classList.add('opacity-0')
 
-
-
-   
-
 })
-
